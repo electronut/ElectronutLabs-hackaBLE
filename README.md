@@ -35,7 +35,7 @@ For more details on nRF5 2programming, please read our guide on [getting started
 
 ## Buy a hackaBLE!
 
-hackaBLE is available for purchase from our [Tindie store][2]. Please email us at **info@electronut.in** if you have any questions.
+hackaBLE is Open Source Hardware, and is available for purchase from our [Tindie store][2]. Please email us at **info@electronut.in** if you have any questions.
 
 <a href="https://www.tindie.com/stores/ElectronutLabs/?ref=offsite_badges&utm_source=sellers_ElectronutLabs&utm_medium=badges&utm_campaign=badge_large"><img src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-larges.png" alt="I sell on Tindie" width="200" height="104"></a>
 
