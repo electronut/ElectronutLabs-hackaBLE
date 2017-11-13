@@ -22,10 +22,16 @@ hackaBLE uses offers more value than just using the BLE module directly - since 
 
 ![hackaBLE](hackaBLE2.jpg)
 
+hackaBLE uses the Nordic nRF52832 which in turn is based on an ARM Cortex-M4 core. So you can really program it with any ARM compatible programmer. We do have a convenient solution though, in the form 
+of our [Bumpy][3] blackmagic probe compatible SWD debugger and our [PogoProg][4]. 
 
+![hackaBLE](hackaBLE3.jpg)
 
+As shown above, use the four SWD pins of PogoProg on hackaBLE to upload or debug hackaBLE.
 
-For more dtails on programming, please read our guide on [getting started with Nordic nRF5 SDK][1].
+Please [read the bumpy documentation][3] on using Bumpy to program hackaBLE.
+
+For more details on nRF5 2programming, please read our guide on [getting started with Nordic nRF5 SDK][1].
 
 ## Buy a hackaBLE!
 
@@ -35,4 +41,6 @@ hackaBLE is available for purchase from our [Tindie store][2]. Please email us a
 
 [1]: https://github.com/electronut/ElectronutLabs-bluey/blob/master/nrf5-sdk-setup.md
 [2]: https://www.tindie.com/stores/ElectronutLabs/
-
+[3]: https://github.com/electronut/ElectronutLabs-Bumpy
+[4]: https://github.com/electronut/ElectronutLabs-PogoProg
+ 
