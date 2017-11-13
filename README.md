@@ -2,7 +2,7 @@
 
 ![hackaBLE](hackaBLE1.jpg)
 
-**hackaBLE** is a tiny (~ 18 mmx 28 mm) Nordic nRF52832 based BLE development board you can embed in your BLE projects. It's designed in such that you can use it three ways:
+**hackaBLE** is a tiny (~ 18 mmx 28 mm) Nordic nRF52832 based BLE development board you can embed in your BLE projects. It's designed such that you can use it three ways:
 
 - On a breadboard
 - On a custom PCB, hand-soldered easily using the castellated 2.54 mm pitch headers
