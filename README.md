@@ -10,6 +10,14 @@
 
 hackaBLE uses offers more value than just using the BLE module directly - since it incorporates the necessary passive compoments - including the ones for the buck converter for power saving - and adds an RGB LED and a button for convenience. It's also much easier to solder than the bare modules. 
 
+## Pinout for hackaBLE
+
+...
+
+## PCB Footprint for hackaBLE
+
+...
+
 ## Programming hackaBLE
 
 ![hackaBLE](hackaBLE2.jpg)
