@@ -33,6 +33,10 @@ Please [read the bumpy documentation][3] on using Bumpy to program hackaBLE.
 
 For more details on nRF5 2programming, please read our guide on [getting started with Nordic nRF5 SDK][1].
 
+## hackaBLE & Arduino
+
+...
+
 ## Buy a hackaBLE!
 
 hackaBLE is Open Source Hardware, and is available for purchase from our [Tindie store][2]. Please email us at **info@electronut.in** if you have any questions.
