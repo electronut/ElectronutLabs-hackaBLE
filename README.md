@@ -16,11 +16,13 @@ hackaBLE uses offers more value than just using the BLE module directly - since 
 
 ## PCB Footprint for hackaBLE
 
-...
+![pinout](hackaBLE-dims.png)
+
+(The kicad footprint for hackaBLE is readily available in this repository.)
 
 ## Programming hackaBLE
 
-![hackaBLE](hackaBLE2.jpg)
+![hackaBLE](hackaBLE-prog.jpg)
 
 hackaBLE uses the Nordic nRF52832 which in turn is based on an ARM Cortex-M4 core. So you can really program it with any ARM compatible programmer. We do have a convenient solution though, in the form 
 of our [Bumpy][3] blackmagic probe compatible SWD debugger and our [PogoProg][4]. 
