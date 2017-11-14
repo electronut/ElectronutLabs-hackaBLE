@@ -37,7 +37,7 @@ For more details on nRF5 2programming, please read our guide on [getting started
 
 ## hackaBLE & Arduino
 
-...
+Coming soon...
 
 ## Buy a hackaBLE!
 
