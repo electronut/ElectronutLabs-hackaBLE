@@ -22,12 +22,12 @@ hackaBLE uses offers more value than just using the BLE module directly - since 
 
 ## Programming hackaBLE
 
-![hackaBLE](hackaBLE-prog.jpg)
+![hackaBLE](hackaBLE-prog1.jpg)
 
 hackaBLE uses the Nordic nRF52832 which in turn is based on an ARM Cortex-M4 core. So you can really program it with any ARM compatible programmer. We do have a convenient solution though, in the form 
 of our [Bumpy][3] blackmagic probe compatible SWD debugger and our [PogoProg][4]. 
 
-![hackaBLE](hackaBLE3.jpg)
+![hackaBLE](hackaBLE-prog2.jpg)
 
 As shown above, use the four SWD pins of PogoProg on hackaBLE to upload or debug hackaBLE.
 
