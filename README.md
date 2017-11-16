@@ -1,4 +1,4 @@
-# hackaBLE
+s# hackaBLE
 
 ![hackaBLE](hackaBLE1.jpg)
 
@@ -8,7 +8,7 @@
 - On a custom PCB, hand-soldered easily using the castellated 2.54 mm pitch headers
 - On a custom PCB, using a stencil and oven, making use of extra pads underneath the PCB
 
-hackaBLE uses offers more value than just using the BLE module directly - since it incorporates the necessary passive compoments - including the ones for the buck converter for power saving - and adds an RGB LED and a button for convenience. It's also much easier to solder than the bare modules. 
+hackaBLE uses offers more value than just using the BLE module directly - since it incorporates the necessary passive components - including the ones for the buck converter for power saving - and adds an RGB LED and a button for convenience. It's also much easier to solder than the bare modules. 
 
 ### Pinout for hackaBLE
 
