@@ -1,7 +1,7 @@
 /*
   hackaBLE beacon
   This puts hackaBLE in non-connectable advertising-only mode with no scan response.
-  The ad packets send out temperature, humidity and ambient light levels.
+  The ad packets send out temperature, humidity and dust sensor values.
   Electronut Labs
   electronut.in
 */
