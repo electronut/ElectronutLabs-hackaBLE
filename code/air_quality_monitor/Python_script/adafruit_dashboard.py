@@ -1,3 +1,19 @@
+"""
+bluey_beacon.py
+This program connects to the hackaBLE Nordic nRF52 dev board 
+made by Electronut Labs. The firmware on hackaBLE has to be running the 
+"air_quality_monitor" code present in this directory. 
+This code is expected to be run on a Raspverry Pi 3.
+It assumes that you have bluez installed - it uses hcidump and hcitool.
+The code reads advertisement packets from bluey, parses the 
+Temperature, Humidity, and dust sensor values 
+posts that to adafruit.io dashboard via adafruit.io cloud server
+Electronut Labs
+electronut.in
+References:
+1. ElectronutLabs-bluey/code/bluey-beacon/bluey_beacon.py
+"""
+
 import re
 import sys
 import os
