@@ -1,6 +1,6 @@
 /*
-  bluey beacon
-  This puts bluey in non-connectable advertising-only mode with no scan response.
+  hackaBLE beacon
+  This puts hackaBLE in non-connectable advertising-only mode with no scan response.
   The ad packets send out temperature, humidity and ambient light levels.
   Electronut Labs
   electronut.in
