@@ -1,0 +1,19 @@
+{
+    "C_Cpp.intelliSenseEngineFallback": "Enabled",
+    "files.associations": {
+        "nrf_sdh.h": "c",
+        "nordic_common.h": "c",
+        "app_uart.h": "c",
+        "nrf.h": "c",
+        "ble_conn_params.h": "c",
+        "ble_hci.h": "c",
+        "compiler_abstraction.h": "c",
+        "nrf51_to_nrf52810.h": "c",
+        "nrf_sdh_soc.h": "c",
+        "bsp_btn_ble.h": "c",
+        "bsp.h": "c",
+        "boards.h": "c",
+        "pca10040.h": "c",
+        "nrf_log.h": "c"
+    }
+}
