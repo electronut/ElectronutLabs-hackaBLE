@@ -1,5 +1,4 @@
 """
-bluey_beacon.py
 This program connects to the hackaBLE Nordic nRF52 dev board 
 made by Electronut Labs. The firmware on hackaBLE has to be running the 
 "air_quality_monitor" code present in this directory. 
