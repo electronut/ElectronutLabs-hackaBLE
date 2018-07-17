@@ -1,4 +1,4 @@
-s# hackaBLE
+# hackaBLE
 
 ![hackaBLE](hackaBLE1.jpg)
 
