@@ -1,37 +1,37 @@
 {
     "docs": [
         {
-            "location": "/README/",
+            "location": "/",
             "text": "hackaBLE\n\n\n\n\nhackaBLE\n is a tiny (~ 18 mm x 28 mm) Open Source Nordic nRF52832 based BLE development board you can embed in your BLE projects. It's designed such that you can use it three ways:\n\n\n\n\nOn a breadboard\n\n\nOn a custom PCB, hand-soldered easily using the castellated 2.54 mm pitch headers\n\n\nOn a custom PCB, using a stencil and oven, making use of extra pads underneath the PCB\n\n\n\n\nhackaBLE uses offers more value than just using the BLE module directly - since it incorporates the necessary passive components - including the ones for the buck converter for power saving - and adds an RGB LED and a button for convenience. It's also much easier to solder than the bare modules. \n\n\nPinout for hackaBLE\n\n\n\n\nPCB Footprint for hackaBLE\n\n\n\n\n(The kicad footprint for hackaBLE is readily available in this repository.)\n\n\nProgramming hackaBLE\n\n\n\n\nhackaBLE uses the Nordic nRF52832 which in turn is based on an ARM Cortex-M4 core. So you can really program it with any ARM compatible programmer. We do have a convenient solution though, in the form \nof our \nBumpy\n blackmagic probe compatible SWD debugger and our \nPogoProg\n. \n\n\n\n\nAs shown above, use the four SWD pins of PogoProg on hackaBLE to upload or debug hackaBLE.\n\n\nPlease \nread the bumpy documentation\n on using Bumpy to program hackaBLE.\n\n\nFor more details on nRF5 2programming, please read our guide on \ngetting started with Nordic nRF5 SDK\n.\n\n\nhackaBLE & Arduino\n\n\nHackable does not ship with a bootloader, but it is supported in arduino. Please see https://github.com/electronut/ElectronutLabs-bluey#Arduino for details (but select Hackable in the boards menu).\n\n\nBuy a hackaBLE!\n\n\nhackaBLE is available for purchase from our \nTindie store\n. Please email us at \ninfo@electronut.in\n if you have any questions.",
             "title": "Home"
         },
         {
-            "location": "/README/#hackable",
+            "location": "/#hackable",
             "text": "hackaBLE  is a tiny (~ 18 mm x 28 mm) Open Source Nordic nRF52832 based BLE development board you can embed in your BLE projects. It's designed such that you can use it three ways:   On a breadboard  On a custom PCB, hand-soldered easily using the castellated 2.54 mm pitch headers  On a custom PCB, using a stencil and oven, making use of extra pads underneath the PCB   hackaBLE uses offers more value than just using the BLE module directly - since it incorporates the necessary passive components - including the ones for the buck converter for power saving - and adds an RGB LED and a button for convenience. It's also much easier to solder than the bare modules.",
             "title": "hackaBLE"
         },
         {
-            "location": "/README/#pinout-for-hackable",
+            "location": "/#pinout-for-hackable",
             "text": "",
             "title": "Pinout for hackaBLE"
         },
         {
-            "location": "/README/#pcb-footprint-for-hackable",
+            "location": "/#pcb-footprint-for-hackable",
             "text": "(The kicad footprint for hackaBLE is readily available in this repository.)",
             "title": "PCB Footprint for hackaBLE"
         },
         {
-            "location": "/README/#programming-hackable",
+            "location": "/#programming-hackable",
             "text": "hackaBLE uses the Nordic nRF52832 which in turn is based on an ARM Cortex-M4 core. So you can really program it with any ARM compatible programmer. We do have a convenient solution though, in the form \nof our  Bumpy  blackmagic probe compatible SWD debugger and our  PogoProg .    As shown above, use the four SWD pins of PogoProg on hackaBLE to upload or debug hackaBLE.  Please  read the bumpy documentation  on using Bumpy to program hackaBLE.  For more details on nRF5 2programming, please read our guide on  getting started with Nordic nRF5 SDK .",
             "title": "Programming hackaBLE"
         },
         {
-            "location": "/README/#hackable-arduino",
+            "location": "/#hackable-arduino",
             "text": "Hackable does not ship with a bootloader, but it is supported in arduino. Please see https://github.com/electronut/ElectronutLabs-bluey#Arduino for details (but select Hackable in the boards menu).",
             "title": "hackaBLE &amp; Arduino"
         },
         {
-            "location": "/README/#buy-a-hackable",
+            "location": "/#buy-a-hackable",
             "text": "hackaBLE is available for purchase from our  Tindie store . Please email us at  info@electronut.in  if you have any questions.",
             "title": "Buy a hackaBLE!"
         }
