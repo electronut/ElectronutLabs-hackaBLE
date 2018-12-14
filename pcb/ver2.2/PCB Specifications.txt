@@ -1,0 +1,11 @@
+Size 		    :	20.32 x 31.54 mm
+Layers 		    :	2 layers
+Material 	    :	FR-4
+Min Hole Size       :	0.3
+Min Track/Spacing   :	6/6mil
+Finished Copper	    :	1 oz Cu
+Surface Finish      :	Immersion gold
+Thickness 	    :	0.8 mm
+Solder Mask         :	Blue
+Silkscreen 	    :	White
+Via Process 	    :	Tenting vias
