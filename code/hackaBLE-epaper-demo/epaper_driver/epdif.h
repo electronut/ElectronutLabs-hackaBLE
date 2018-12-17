@@ -28,12 +28,12 @@
 #ifndef EPDIF_H
 #define EPDIF_H
 
-#define BUSY_Pin 26
-#define RST_Pin 27
-#define DC_Pin 22
-#define SPI_CS_Pin      23
-#define SPI_SCK_Pin     3
-#define SPI_MOSI_Pin    5
+#define BUSY_Pin 2
+#define RST_Pin 3
+#define DC_Pin 4
+#define SPI_CS_Pin      5
+#define SPI_SCK_Pin     6
+#define SPI_MOSI_Pin    7
 
 // Pin definition
 #define CS_PIN           0

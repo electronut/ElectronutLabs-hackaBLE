@@ -84,6 +84,10 @@
 #include "nrf_log_default_backends.h"
 
 
+// begin - epaper 
+#define COLORED      1
+#define UNCOLORED    0
+
 #include "nrf_drv_spi.h"
 #include "epd1in54b.h"
 #include "epdif.h"
@@ -849,6 +853,130 @@ static void advertising_start(bool erase_bonds)
     }
 }
 
+/**
+ * @brief SPI user event handler.
+ * @param event
+ */
+void spi_event_handler(nrf_drv_spi_evt_t const * p_event,
+                       void *                    p_context)
+{
+    spi_xfer_done = true;
+    //- NRF_LOG_INFO("Transfer completed.");
+}
+
+static void spi_init()
+{
+    // set SS pin as output
+    // nrf_gpio_pin_set(SPI_CS_Pin);
+    // nrf_gpio_cfg_output(SPI_CS_Pin);
+    
+    config.frequency = NRF_DRV_SPI_FREQ_1M;
+    config.mode = NRF_DRV_SPI_MODE_0;
+    config.bit_order = NRF_DRV_SPI_BIT_ORDER_MSB_FIRST;
+    config.miso_pin = NRF_DRV_SPI_PIN_NOT_USED;
+    config.mosi_pin = SPI_MOSI_Pin;
+    config.sck_pin = SPI_SCK_Pin;
+    config.ss_pin = SPI_CS_Pin;
+
+    APP_ERROR_CHECK(nrf_drv_spi_init(&spi, &config, NULL, NULL));
+}
+
+static void epaper_init()
+{
+    
+    nrf_gpio_cfg_output(DC_Pin);
+    nrf_gpio_cfg_output(RST_Pin);
+    nrf_gpio_cfg_output(SPI_CS_Pin);
+    nrf_gpio_cfg_input(BUSY_Pin, NRF_GPIO_PIN_NOPULL);
+
+    nrf_gpio_pin_clear(DC_Pin);
+    nrf_gpio_pin_clear(RST_Pin);
+    nrf_gpio_pin_clear(SPI_CS_Pin);
+
+}
+
+static int epaper_test()
+{
+    /* USER CODE BEGIN 1 */
+    /* you have to edit the startup_stm32fxxx.s file and set a big enough heap size */
+    unsigned char* frame_buffer_black = (unsigned char*)malloc(EPD_WIDTH * EPD_HEIGHT / 8);
+    unsigned char* frame_buffer_red = (unsigned char*)malloc(EPD_WIDTH * EPD_HEIGHT / 8);
+
+    /* USER CODE BEGIN 2 */
+    EPD epd;
+    if (EPD_Init(&epd) != 0) {
+        NRF_LOG_INFO("e-Paper init failed\n");
+        NRF_LOG_FLUSH();
+        return -1;
+    }
+    
+    Paint paint_black;
+    Paint paint_red;
+    Paint_Init(&paint_black, frame_buffer_black, epd.width, epd.height);
+    Paint_Init(&paint_red, frame_buffer_red, epd.width, epd.height);
+    Paint_Clear(&paint_black, UNCOLORED);
+    Paint_Clear(&paint_red, UNCOLORED);
+
+    #if 1
+    /* Draw something to the frame buffer */
+    /* For simplicity, the arguments are explicit numerical coordinates */
+    Paint_DrawRectangle(&paint_black, 10, 60, 50, 110, COLORED);
+    Paint_DrawLine(&paint_black, 10, 60, 50, 110, COLORED);
+    Paint_DrawLine(&paint_black, 50, 60, 10, 110, COLORED);
+    Paint_DrawLine(&paint_red, 50, 60, 10, 110, COLORED);
+
+    Paint_DrawCircle(&paint_red, 120, 80, 30, COLORED);
+
+    Paint_DrawFilledRectangle(&paint_black, 10, 130, 50, 180, COLORED);
+    Paint_DrawFilledRectangle(&paint_red, 10, 130, 50, 180, COLORED);
+
+    Paint_DrawFilledCircle(&paint_red, 120, 150, 30, COLORED);
+    Paint_DrawFilledCircle(&paint_red, 120, 150, 25, UNCOLORED);
+
+    /*Write strings to the buffer */
+    Paint_SetRotate(&paint_black, 3);
+    Paint_DrawStringAt(&paint_black, 0, 180, "e-Paper Demo", &Font20, COLORED);
+    Paint_SetRotate(&paint_black, 0);
+    Paint_DrawStringAt(&paint_red, 0, 0, "Hello world!", &Font20, COLORED);
+    Paint_DrawStringAt(&paint_black, 0, 0, "Hello world!", &Font20, COLORED);
+
+    Paint_DrawPixel(&paint_black, 50, 50, COLORED);
+    Paint_DrawPixel(&paint_black, 50, 51, COLORED);
+    Paint_DrawPixel(&paint_black, 50, 52, COLORED);
+    Paint_DrawPixel(&paint_black, 50, 53, COLORED);
+    Paint_DrawPixel(&paint_black, 50, 54, COLORED);
+    Paint_DrawPixel(&paint_black, 50, 55, COLORED);
+    Paint_DrawPixel(&paint_black, 50, 56, COLORED);
+    Paint_DrawPixel(&paint_black, 50, 57, COLORED);
+    Paint_DrawPixel(&paint_black, 50, 58, COLORED);
+    #endif
+    
+    #if 0
+    /* Display the frame_buffer */
+    Paint_SetRotate(&paint_black, 3);
+    Paint_DrawFilledRectangle(&paint_black, 0, 0, 200, 25, COLORED);
+    Paint_DrawStringAt(&paint_black, 152, 4, "23%", &Font20, UNCOLORED);
+    Paint_DrawBitmap(&paint_black, 0, 48, battery_f_bwData, battery_f_image_width, battery_f_image_height, UNCOLORED);
+    
+    // Paint_DrawBitmap(&paint_black, 32, 0, temp_bwData, temp_image_width, temp_image_height, COLORED);
+    Paint_DrawBitmap(&paint_red, 32, 0, temp_bwData, temp_image_width, temp_image_height, COLORED);
+    
+    // Paint_DrawBitmap(&paint_black, 72, 0, humidity_bwData, humidity_image_width, humidity_image_height, COLORED);
+    Paint_DrawBitmap(&paint_red, 72, 0, humidity_bwData, humidity_image_width, humidity_image_height, COLORED);
+    
+    // Paint_DrawBitmap(&paint_black, 112, 0, vibration_bwData, vibration_image_width, vibration_image_height, COLORED);
+    Paint_DrawBitmap(&paint_red, 112, 0, vibration_bwData, vibration_image_width, vibration_image_height, COLORED);
+    
+    Paint_SetRotate(&paint_red, 3);
+    Paint_DrawBitmap(&paint_red, 48, 36, warning_144_128_bwData, warning_144_128_image_width, warning_144_128_image_height, COLORED);
+    // Paint_DrawBitmap(&paint_red, 20, 12, warning_176_160_bwData, warning_176_160_image_width, warning_176_160_image_height, COLORED);
+    #endif
+
+    EPD_DisplayFrame(&epd, frame_buffer_black, frame_buffer_red);
+
+    return 0;
+}
+
 /**@brief Function for application main entry.
  */
 int main(void)
@@ -874,6 +1002,11 @@ int main(void)
 
     advertising_start(erase_bonds);
 
+    spi_init();
+    epaper_init();
+
+    epaper_test();
+    
     // Enter main loop.
     for (;;)
     {
