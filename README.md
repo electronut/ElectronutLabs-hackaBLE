@@ -4,7 +4,9 @@
 
 **Whats new**
 
-hackaBLE 2 is a redesigned hackaBLE that used the BLE SoC directly rather than a module.
+hackaBLE 2 is a redesigned hackaBLE that used the BLE SoC directly rather than a module. Her's the footprint. 
+
+![hackable2](docs/hackaBLEv2.2/hackaBLE_Dimensions.png)
 
 CAUTION
 
