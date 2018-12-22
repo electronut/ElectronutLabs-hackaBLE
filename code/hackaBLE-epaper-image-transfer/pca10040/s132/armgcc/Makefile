@@ -64,6 +64,7 @@ SRC_FILES += \
   $(PROJ_DIR)/epaper_driver/fonts/font16.c \
   $(PROJ_DIR)/epaper_driver/fonts/font20.c \
   $(PROJ_DIR)/epaper_driver/fonts/font24.c \
+  $(PROJ_DIR)/epaper.c \
   $(SDK_ROOT)/external/segger_rtt/SEGGER_RTT.c \
   $(SDK_ROOT)/external/segger_rtt/SEGGER_RTT_Syscalls_GCC.c \
   $(SDK_ROOT)/external/segger_rtt/SEGGER_RTT_printf.c \

@@ -18,8 +18,8 @@
 #define EPD_RST_PIN 3
 #define EPD_DC_PIN 4
 #define EPD_SPI_CS_PIN      5
-#define EPD_SPI_SCK_PIN     6
-#define EPD_SPI_MOSI_PIN    7
+#define EPD_SPI_SCK_PIN     7
+#define EPD_SPI_MOSI_PIN    8
 
 // Pin definition
 #define CS_PIN           0

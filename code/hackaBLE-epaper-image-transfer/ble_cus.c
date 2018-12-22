@@ -6,6 +6,21 @@
 #include "boards.h"
 #include "nrf_log.h"
 
+#include "epaper.h"
+
+unsigned char epaper_bwData[EPD_WIDTH * EPD_HEIGHT / 8];
+
+#define RED_LED 19
+#define GREEN_LED 18
+#define BLUE_LED 17
+
+void leds_off()
+{
+	nrf_gpio_pin_set(RED_LED);
+    nrf_gpio_pin_set(GREEN_LED);
+    nrf_gpio_pin_set(BLUE_LED);
+}
+
 /**@brief Function for handling the Connect event.
  *
  * @param[in]   p_cus       Custom Service structure.
@@ -49,55 +64,95 @@ static void on_write(ble_cus_t * p_cus, ble_evt_t const * p_ble_evt)
     ble_gatts_evt_write_t const * p_evt_write = &p_ble_evt->evt.gatts_evt.params.write;
     
     // Custom Value Characteristic Written to.
-    if (p_evt_write->handle == p_cus->custom_value_handles.value_handle)
+    for(int i=0; i<NO_OF_CHARACTERISTCS; i++)
     {
-        nrf_gpio_pin_toggle(LED_4);
-        /*
-        if(*p_evt_write->data == 0x01)
+        uint8_t value[EPAPER_CHARACTERISTC_VALUE_LENGTH];
+        if (p_evt_write->handle == p_cus->custom_value_handles[i].value_handle)
         {
-            nrf_gpio_pin_clear(20); 
-        }
-        else if(*p_evt_write->data == 0x02)
-        {
-            nrf_gpio_pin_set(20); 
-        }
-        else
-        {
-          //Do nothing
-        }
-        */
-    }
-
-    // Check if the Custom value CCCD is written to and that the value is the appropriate length, i.e 2 bytes.
-    if ((p_evt_write->handle == p_cus->custom_value_handles.cccd_handle)
-        && (p_evt_write->len == 2)
-       )
-    {
-        // CCCD written, call application event handler
-        if (p_cus->evt_handler != NULL)
-        {
-            ble_cus_evt_t evt;
-
-            if (ble_srv_is_notification_enabled(p_evt_write->data))
+            for(int i=0; i<p_evt_write->len; i++)
             {
-                evt.evt_type = BLE_CUS_EVT_NOTIFICATION_ENABLED;
+                // NRF_LOG_RAW_INFO("%x ", p_evt_write->data[i]);
+                value[i] = p_evt_write->data[i];
+            }
+
+            int data_length = (p_evt_write->len)-2;
+            static int frame_no;
+            int tmp_frame_no = ((value[0]<<8) | value[1]);
+            bool last_frame = false;
+
+            static uint32_t green_led_state = 1;
+
+            if(tmp_frame_no==0) // end frame
+            {
+                frame_no++;
+                last_frame = true;
+                NRF_LOG_RAW_INFO("last frame\r\n");
+
+                NRF_LOG_RAW_INFO("%d : ", frame_no);
+                for (int i = 0; i < 8; i++) { //last buffer size = 8
+                    epaper_bwData[((frame_no-1)*data_length)+i] = value[i+2];
+                    NRF_LOG_RAW_INFO("%02x", value[i]);
+                }
+                NRF_LOG_RAW_INFO("\r\n");
+
+                leds_off();
+                nrf_gpio_pin_clear(BLUE_LED);
             }
             else
             {
-                evt.evt_type = BLE_CUS_EVT_NOTIFICATION_DISABLED;
+                frame_no = tmp_frame_no;
+                NRF_LOG_RAW_INFO("%d : ", frame_no);
+                for (int i = 0; i < data_length; i++) {
+                    epaper_bwData[((frame_no-1)*data_length)+i] = value[i+2];
+                    NRF_LOG_RAW_INFO("%02x", value[i]);
+                }
+                NRF_LOG_RAW_INFO("\r\n");
+
+                leds_off();
+                green_led_state = green_led_state ? 0:1;
+                nrf_gpio_pin_write(GREEN_LED, green_led_state);
             }
-            // Call the application event handler.
-            p_cus->evt_handler(p_cus, &evt);
+
+            if(last_frame)
+            {
+                Paint_DrawBitmap(&paint_black, 0, 0, epaper_bwData, EPD_WIDTH, EPD_HEIGHT, COLORED);
+                EPD_DisplayFrame(&epd, frame_buffer_black, frame_buffer_red);
+            }
         }
     }
 
+    for(int i=0; i<NO_OF_CHARACTERISTCS; i++)
+    {
+        // Check if the Custom value CCCD is written to and that the value is the appropriate length, i.e 2 bytes.
+        if ((p_evt_write->handle == p_cus->custom_value_handles[i].cccd_handle)
+            && (p_evt_write->len == 2)
+        )
+        {
+            // CCCD written, call application event handler
+            if (p_cus->evt_handler != NULL)
+            {
+                ble_cus_evt_t evt;
+
+                if (ble_srv_is_notification_enabled(p_evt_write->data))
+                {
+                    evt.evt_type = BLE_CUS_EVT_NOTIFICATION_ENABLED;
+                }
+                else
+                {
+                    evt.evt_type = BLE_CUS_EVT_NOTIFICATION_DISABLED;
+                }
+                // Call the application event handler.
+                p_cus->evt_handler(p_cus, &evt);
+            }
+        }
+    }
 }
 
 void ble_cus_on_ble_evt( ble_evt_t const * p_ble_evt, void * p_context)
 {
     ble_cus_t * p_cus = (ble_cus_t *) p_context;
     
-    NRF_LOG_INFO("BLE event received. Event type = %d\r\n", p_ble_evt->header.evt_id); 
+    // NRF_LOG_INFO("BLE event received. Event type = %d\r\n", p_ble_evt->header.evt_id); 
     if (p_cus == NULL || p_ble_evt == NULL)
     {
         return;
@@ -134,7 +189,8 @@ void ble_cus_on_ble_evt( ble_evt_t const * p_ble_evt, void * p_context)
  *
  * @return      NRF_SUCCESS on success, otherwise an error code.
  */
-static uint32_t custom_value_char_add(ble_cus_t * p_cus, const ble_cus_init_t * p_cus_init)
+static uint32_t custom_value_char_add(ble_cus_t * p_cus, const ble_cus_init_t * p_cus_init, uint16_t UUID_chararc_no,
+                                uint8_t read_status, uint8_t write_status, uint8_t characteristics_no, uint8_t size_of_charac)
 {
     uint32_t            err_code;
     ble_gatts_char_md_t char_md;
@@ -155,8 +211,8 @@ static uint32_t custom_value_char_add(ble_cus_t * p_cus, const ble_cus_init_t * 
 
     memset(&char_md, 0, sizeof(char_md));
 
-    char_md.char_props.read   = 1;
-    char_md.char_props.write  = 1;
+    char_md.char_props.read   = read_status;
+    char_md.char_props.write  = write_status;
     char_md.char_props.notify = 1; 
     char_md.p_char_user_desc  = NULL;
     char_md.p_char_pf         = NULL;
@@ -165,7 +221,7 @@ static uint32_t custom_value_char_add(ble_cus_t * p_cus, const ble_cus_init_t * 
     char_md.p_sccd_md         = NULL;
 		
     ble_uuid.type = p_cus->uuid_type;
-    ble_uuid.uuid = CUSTOM_VALUE_CHAR_UUID;
+    ble_uuid.uuid = UUID_chararc_no;
 
     memset(&attr_md, 0, sizeof(attr_md));
 
@@ -180,13 +236,13 @@ static uint32_t custom_value_char_add(ble_cus_t * p_cus, const ble_cus_init_t * 
 
     attr_char_value.p_uuid    = &ble_uuid;
     attr_char_value.p_attr_md = &attr_md;
-    attr_char_value.init_len  = sizeof(uint8_t);
+    attr_char_value.init_len  = size_of_charac;
     attr_char_value.init_offs = 0;
-    attr_char_value.max_len   = sizeof(uint8_t);
+    attr_char_value.max_len   = size_of_charac;
 
     err_code = sd_ble_gatts_characteristic_add(p_cus->service_handle, &char_md,
                                                &attr_char_value,
-                                               &p_cus->custom_value_handles);
+                                               &p_cus->custom_value_handles[characteristics_no]);
     if (err_code != NRF_SUCCESS)
     {
         return err_code;
@@ -225,35 +281,19 @@ uint32_t ble_cus_init(ble_cus_t * p_cus, const ble_cus_init_t * p_cus_init)
     }
 
     // Add Custom Value characteristic
-    return custom_value_char_add(p_cus, p_cus_init);
+    custom_value_char_add(p_cus, p_cus_init, EPAPER_CHARACTERISTC_UUID, 1, 1, 0, 18);
+    return 0;
 }
 
-uint32_t ble_cus_custom_value_update(ble_cus_t * p_cus, uint8_t custom_value)
+uint32_t ble_cus_custom_value_update(ble_cus_t * p_cus, uint8_t charac_no, uint8_t *charac_value, uint16_t * charac_len)
 {
-    NRF_LOG_INFO("In ble_cus_custom_value_update. \r\n"); 
-    if (p_cus == NULL)
-    {
-        return NRF_ERROR_NULL;
-    }
+    NRF_LOG_INFO("In ble_cus_custom_value_update. \r\n");
+    // if (p_cus == NULL)
+    // {
+    //     return NRF_ERROR_NULL;
+    // }
 
     uint32_t err_code = NRF_SUCCESS;
-    ble_gatts_value_t gatts_value;
-
-    // Initialize value struct.
-    memset(&gatts_value, 0, sizeof(gatts_value));
-
-    gatts_value.len     = sizeof(uint8_t);
-    gatts_value.offset  = 0;
-    gatts_value.p_value = &custom_value;
-
-    // Update database.
-    err_code = sd_ble_gatts_value_set(p_cus->conn_handle,
-                                      p_cus->custom_value_handles.value_handle,
-                                      &gatts_value);
-    if (err_code != NRF_SUCCESS)
-    {
-        return err_code;
-    }
 
     // Send value if connected and notifying.
     if ((p_cus->conn_handle != BLE_CONN_HANDLE_INVALID)) 
@@ -262,19 +302,22 @@ uint32_t ble_cus_custom_value_update(ble_cus_t * p_cus, uint8_t custom_value)
 
         memset(&hvx_params, 0, sizeof(hvx_params));
 
-        hvx_params.handle = p_cus->custom_value_handles.value_handle;
+        hvx_params.handle = p_cus->custom_value_handles[charac_no].value_handle;
         hvx_params.type   = BLE_GATT_HVX_NOTIFICATION;
-        hvx_params.offset = gatts_value.offset;
-        hvx_params.p_len  = &gatts_value.len;
-        hvx_params.p_data = gatts_value.p_value;
+        // hvx_params.offset = gatts_value.offset;
+        // hvx_params.p_len  = &gatts_value.len;
+        // hvx_params.p_data = gatts_value.p_value;
+        
+        hvx_params.p_data = charac_value;
+        hvx_params.p_len  = charac_len;
 
         err_code = sd_ble_gatts_hvx(p_cus->conn_handle, &hvx_params);
-        NRF_LOG_INFO("sd_ble_gatts_hvx result: %x. \r\n", err_code); 
+        NRF_LOG_INFO("sd_ble_gatts_hvx result: %x. \r\n", err_code);
     }
     else
     {
         err_code = NRF_ERROR_INVALID_STATE;
-        NRF_LOG_INFO("sd_ble_gatts_hvx result: NRF_ERROR_INVALID_STATE. \r\n"); 
+        NRF_LOG_INFO("sd_ble_gatts_hvx result: NRF_ERROR_INVALID_STATE. \r\n");
     }
 
 
