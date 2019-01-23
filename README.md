@@ -1,24 +1,22 @@
-# Introducing hackaBLE v2.2 
+# HackaBLE v2.2 
 
-![hackable2](docs/hackaBLEv2.2/hack_front.jpg)
+<img src="docs/hackaBLEv2.2/hack_front.jpg" alt="hackable2" width="600"/>
 
-**Whats new**
-
-hackaBLE 2 is a redesigned hackaBLE that used the BLE SoC directly rather than a module. Her's the footprint. 
+hackaBLE v2.2 is a redesigned hackaBLE that used the BLE SoC directly rather than a module. Here's the footprint. 
 
 ![hackable2](docs/hackaBLEv2.2/hackaBLE_Dimensions.png)
 
-CAUTION
+**NOTE**
 
 hackaBLE 2 does not come with a regulator, since it's designed for low power applications. MAX input to VDD is 3.6 V.
 
 ![pinout](docs/hackaBLEv2.2/hackable_pinout.png)
 
-**usage**
+**Usage**
 
 Programming and integrating hackaBLE to your project is similar as before. Please follow the direction given below.
 
-# hackaBLE
+# hackaBLE v0.2
 
 ![hackaBLE](docs/hackaBLEv0.2/hackaBLE1.jpg)
 
