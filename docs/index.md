@@ -1,6 +1,6 @@
 # hackaBLE
 
-![hackaBLE](hackaBLE1.jpg)
+![hackaBLE](./hackaBLEv0.2/hackaBLE1.jpg)
 
 **hackaBLE** is a tiny (~ 18 mm x 28 mm) Open Source Nordic nRF52832 based BLE development board you can embed in your BLE projects. It's designed such that you can use it three ways:
 
@@ -12,22 +12,22 @@ hackaBLE uses offers more value than just using the BLE module directly - since 
 
 ### Pinout for hackaBLE
 
-![pinout](hackaBLE-pinout.png)
+![pinout](./hackaBLEv0.2/hackaBLE-pinout.png)
 
 ## PCB Footprint for hackaBLE
 
-![pinout](hackaBLE-dims.png)
+![pinout](./hackaBLEv0.2/hackaBLE-dims.png)
 
 (The kicad footprint for hackaBLE is readily available in this repository.)
 
 ## Programming hackaBLE
 
-![hackaBLE](hackaBLE-prog1.jpg)
+![hackaBLE](./hackaBLEv0.2/hackaBLE-prog1.jpg)
 
 hackaBLE uses the Nordic nRF52832 which in turn is based on an ARM Cortex-M4 core. So you can really program it with any ARM compatible programmer. We do have a convenient solution though, in the form 
 of our [Bumpy][3] blackmagic probe compatible SWD debugger and our [PogoProg][4]. 
 
-![hackaBLE](hackaBLE-prog2.jpg)
+![hackaBLE](./hackaBLEv0.2/hackaBLE-prog2.jpg)
 
 As shown above, use the four SWD pins of PogoProg on hackaBLE to upload or debug hackaBLE.
 
