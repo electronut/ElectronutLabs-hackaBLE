@@ -1,26 +1,6 @@
-# Introducing hackaBLE v2.2 
-
-![hackable2](docs/hackaBLEv2.2/hack_front.jpg)
-
-**Whats new**
-
-hackaBLE 2 is a redesigned hackaBLE that used the BLE SoC directly rather than a module. Her's the footprint. 
-
-![hackable2](docs/hackaBLEv2.2/hackaBLE_Dimensions.png)
-
-CAUTION
-
-hackaBLE 2 does not come with a regulator, since it's designed for low power applications. MAX input to VDD is 3.6 V.
-
-![pinout](docs/hackaBLEv2.2/hackable_pinout.png)
-
-**usage**
-
-Programming and integrating hackaBLE to your project is similar as before. Please follow the direction given below.
-
 # hackaBLE
 
-![hackaBLE](docs/hackaBLEv0.2/hackaBLE1.jpg)
+![hackaBLE](docs/hackaBLEv0.3/hackable_v0.3.jpg)
 
 **hackaBLE** is a tiny (~ 18 mm x 28 mm) Open Source Nordic nRF52832 based BLE development board you can embed in your BLE projects. It's designed such that you can use it three ways:
 
@@ -32,7 +12,7 @@ hackaBLE uses offers more value than just using the BLE module directly - since 
 
 ### Pinout for hackaBLE
 
-![pinout](docs/hackaBLEv0.2/hackaBLE-pinout.png)
+![pinout](docs/hackaBLEv0.3/hackaBLE-pinout_V0.3.1.png)
 
 ## PCB Footprint for hackaBLE
 
@@ -58,6 +38,12 @@ For more details on nRF5 2programming, please read our guide on [getting started
 ## hackaBLE & Arduino
 
 Hackable does not ship with a bootloader, but it is supported in arduino. Please see https://github.com/electronut/ElectronutLabs-bluey#Arduino for details (but select Hackable in the boards menu).
+
+## Soldering a hackaBLE
+
+hackaBLE can be used on a breadboard. Here's a video that will show how to solder headers on to hackaBLE.
+
+https://www.youtube.com/watch?v=VOO5d_ryxtU
 
 ## Buy a hackaBLE!
 
