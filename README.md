@@ -1,5 +1,3 @@
-# hackaBLE
-
 ![hackaBLE](docs/hackaBLEv0.3/hackable_v0.3.jpg)
 
 **hackaBLE** is a tiny (~ 18 mm x 28 mm) Open Source Nordic nRF52832 based BLE development board you can embed in your BLE projects. It's designed such that you can use it three ways:
