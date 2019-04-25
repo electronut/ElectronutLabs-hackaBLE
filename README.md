@@ -30,7 +30,9 @@ Currently, there are two versions available in the market. Select your version o
 ![hackaBLEv0.3 thumbnail](docs/hackaBLEv2.2/thumbnail.jpg)
 
 
-<h2 id="hackaBLE_v0.3"> hackaBLE v0.3 </h2>
+<h2 id="hackaBLE_v0.3"></h2>
+
+## hackaBLE v0.3
 
 ![hackaBLE](docs/hackaBLEv0.3/hackable_v0.3.jpg)
 
@@ -46,11 +48,13 @@ This is the latest version of hackaBLE it uses **Raytac's nRF52832 module** by N
 
 ### hackaBLE v0.3 Schematic and Datasheet
 
-- schematic
+- [schematic](https://github.com/electronut/ElectronutLabs-hackaBLE/blob/master/pcb/ver0.3/hackaBLE_Schematic.pdf)
 - datasheet
 
 <hr>
-<h2 id="hackaBLE_v2.2"> hackaBLE v2.2 </h2>
+<h2 id="hackaBLE_v2.2"></h2>
+
+## hackaBLE v2.2
 
 ![hackable2](docs/hackaBLEv2.2/hack_front.jpg)
 
@@ -77,13 +81,15 @@ As shown above, use the four SWD pins of PogoProg on hackaBLE to upload or debug
 
 Please [read the bumpy documentation][3] on using Bumpy to program hackaBLE.
 
-For more details on nRF52 programming, please read our guide on [getting started with Nordic nRF5 SDK][1].
+For more details on nRF52 programming, please read our guide on [getting started with Nordic nRF5 SDK][1]. 
 
 ### Program using Arduino IDE
 
 hackable does not ship with a bootloader, but it is supported in Arduino. Please visit [here](https://github.com/electronut/ElectronutLabs-bluey#Arduino) for details (but select Hackable in the board's menu).
 
 [Here's](https://electronut.in/using-hackable-with-arduino/) a blog article which will help you create a BLE custom characteristic and program it to hackaBLE using Arduino IDE.
+
+For more detailed programming guide go [here](https://docs.electronut.in/hackaBLE/programming_guide/)
 
 ## Soldering a hackaBLE
 
@@ -106,7 +112,7 @@ hackaBLE is available for purchase from our [Tindie store][2]. Please email us a
 
 You can find all code and design files related to Papyr at the link below:
 
-[https://gitlab.com/electronutlabs-public/papyr/](https://gitlab.com/electronutlabs-public/papyr/)
+[https://github.com/electronut/ElectronutLabs-hackaBLE](https://github.com/electronut/ElectronutLabs-hackaBLE)
 
 ## About Electronut Labs
 
