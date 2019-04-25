@@ -1,5 +1,6 @@
 ![hackaBLE](docs/hackaBLEv0.3/hackable_v0.3.jpg)
-# What is hackaBLE ?
+
+## What is hackaBLE ?
 
 **hackaBLE** is a tiny (~ 18 mm x 28 mm) Open Source Nordic nRF52832 based BLE development board you can embed in your BLE projects. It's designed such that you can use it in three ways:
 
@@ -18,33 +19,53 @@ hackaBLE uses offers more value than just using the BLE module directly - since 
 - MCP1702 3.3 V LDO
 - Reverse current protection.
 
-## Getting Started
-
 Currently, there are two versions available in the market. Select your version of hackaBLE from below and follow the documentation. 
 
-![hackaBLEv0.3 thumbnail](docs/hackaBLEv0.3/thumbnail.jpg)
 <h3><a href="#hackaBLE_v0.3">hackaBLE v0.3</a></h3>
 
-![hackaBLEv0.3 thumbnail](docs/hackaBLEv2.2/thumbnail.jpg)
+![hackaBLEv0.3 thumbnail](docs/hackaBLEv0.3/thumbnail.jpg)
+
 <h3><a href="#hackaBLE_v2.2">hackaBLE v2.2</a></h3>
 
-<h1 id="hackaBLE_v0.3"> hackaBLE v0.3 </h1>
+![hackaBLEv0.3 thumbnail](docs/hackaBLEv2.2/thumbnail.jpg)
+
+
+<h2 id="hackaBLE_v0.3"> hackaBLE v0.3 </h2>
 
 ![hackaBLE](docs/hackaBLEv0.3/hackable_v0.3.jpg)
 
-This is the latest version of hackaBLE it uses nRF52832 Nordic Semiconductor's module. This version is used MCP1702, a 3.3 V voltage and protection diode at the input which provides very low current consumption and reverse current protection. It also comes with an RGB LED, user reset button and SWD programming headers.  
+This is the latest version of hackaBLE it uses **Raytac's nRF52832 module** by Nordic Semiconductors. This version uses MCP1702, a 3.3 V voltage and protection diode at the input which enables hackaBLE to consume very low current and also provides reverse current protection. It also comes with an RGB LED, user reset button and SWD programming headers.  
 
-### Pinout for hackaBLE
+### hackaBLE v0.3 pinout
 
 ![pinout](docs/hackaBLEv0.3/hackaBLE-pinout_V0.3.1.png)
 
-## PCB Footprint for hackaBLE
+### hackaBLE v0.3 PCB Footprint
 
 ![pinout](docs/hackaBLEv0.2/hackaBLE-dims.png)
 
-(The kicad footprint for hackaBLE is readily available in this repository.)
+### hackaBLE v0.3 Schematic and Datasheet
 
-<h1 id="#Programming hackaBLE"> Programming hackaBLE </h1>
+- schematic
+- datasheet
+
+<hr>
+<h2 id="hackaBLE_v2.2"> hackaBLE v2.2 </h2>
+
+![hackable2](docs/hackaBLEv2.2/hack_front.jpg)
+
+hackaBLE v2.2 is a redesigned hackaBLE that used the BLE SoC directly rather than a module. This version of hackaBLE also comes with an RGB LED, button, and SWD programming headers. It has onboard BLE antenna. 
+
+**[CAUTION]** hackaBLE v2.2 does not come with a regulator since it's designed for low power applications. MAX input to VDD is 3.6 V.
+
+### hackaBLE v2.2 pinout
+![pinout](docs/hackaBLEv2.2/hackable_pinout.png)
+
+### Schematic for hackaBLE v2.2
+
+- [Schematic](https://github.com/electronut/ElectronutLabs-hackaBLE/blob/master/pcb/ver2.2/hackaBLE.pdf)
+
+## Programming hackaBLE
 
 hackaBLE uses the Nordic nRF52832 which in turn is based on an ARM Cortex-M4 core. So you can really program it with any ARM compatible programmer. We do have a convenient solution though, in the form of our [Bumpy][3] Blackmagic probe compatible SWD debugger and our [PogoProg][4].
 
@@ -58,9 +79,9 @@ Please [read the bumpy documentation][3] on using Bumpy to program hackaBLE.
 
 For more details on nRF52 programming, please read our guide on [getting started with Nordic nRF5 SDK][1].
 
-## Program using Arduino IDE
+### Program using Arduino IDE
 
-hackable does not ship with a bootloader, but it is supported in Arduino. Please see https://github.com/electronut/ElectronutLabs-bluey#Arduino for details (but select Hackable in the board's menu).
+hackable does not ship with a bootloader, but it is supported in Arduino. Please visit [here](https://github.com/electronut/ElectronutLabs-bluey#Arduino) for details (but select Hackable in the board's menu).
 
 [Here's](https://electronut.in/using-hackable-with-arduino/) a blog article which will help you create a BLE custom characteristic and program it to hackaBLE using Arduino IDE.
 
@@ -69,22 +90,6 @@ hackable does not ship with a bootloader, but it is supported in Arduino. Please
 hackaBLE can be used on a breadboard. Here's a video that will show how to solder headers on to hackaBLE.
 
 [![soldering_hackable](http://img.youtube.com/vi/VOO5d_ryxtU/0.jpg)](http://www.youtube.com/watch?v=VOO5d_ryxtU)
-
-<hr>
-<h2 id="hackaBLE_v2.2"> hackaBLE v2.2 </h2>
-
-![hackable2](docs/hackaBLEv2.2/hack_front.jpg)
-
-hackaBLE v2.2 is a redesigned hackaBLE that used the BLE SoC directly rather than a module. This version of hackaBLE also comes with an RGB LED, button, and SWD programming headers. It has onboard BLE antenna. 
-
-**[CAUTION]** hackaBLE v2.2 does not come with a regulator since it's designed for low power applications. MAX input to VDD is 3.6 V.
-
-## hackaBLE v2.2 pinout
-![pinout](docs/hackaBLEv2.2/hackable_pinout.png)
-
-## Programming hackaBLE v2.2
-
-Programming hackaBLE is same as v0.3. Please follow the instructions above.
 
 ## Buy a hackaBLE!
 
@@ -96,5 +101,17 @@ hackaBLE is available for purchase from our [Tindie store][2]. Please email us a
 [2]: https://www.tindie.com/stores/ElectronutLabs/
 [3]: https://github.com/electronut/ElectronutLabs-Bumpy
 [4]: https://github.com/electronut/ElectronutLabs-PogoProg
+
+## Code Repository
+
+You can find all code and design files related to Papyr at the link below:
+
+[https://gitlab.com/electronutlabs-public/papyr/](https://gitlab.com/electronutlabs-public/papyr/)
+
+## About Electronut Labs
+
+**Electronut Labs** is an Embedded Systems company based in Bangalore, India. More 
+information at our [website](https://electronut.in).
+
  
  
