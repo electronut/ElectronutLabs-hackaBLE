@@ -14,7 +14,7 @@ hackaBLE uses offers more value than just using the BLE module directly - since 
 
 - Raytac MDBT42 based on Nordic Semiconductor's nRF52832 SOC with chip antenna
 - RGB LED
-- Button user configurable, set as RESET as default
+- Button user configurable, set as RESET by default
 - SWD programming headers
 - MCP1702 3.3 V LDO
 - Reverse current protection.
@@ -56,7 +56,7 @@ This is the latest version of hackaBLE it uses **Raytac's nRF52832 module** by N
 
 ## hackaBLE v2.2
 
-![hackable2](docs/hackaBLEv2.2/hack_front.jpg)
+![hackable2](docs/hackaBLEv2.2/hackable_front.jpg)
 
 hackaBLE v2.2 is a redesigned hackaBLE that used the BLE SoC directly rather than a module. This version of hackaBLE also comes with an RGB LED, button, and SWD programming headers. It has onboard BLE antenna. 
 
@@ -91,9 +91,9 @@ hackable does not ship with a bootloader, but it is supported in Arduino. Please
 
 For more detailed programming guide go [here](https://docs.electronut.in/hackaBLE/programming_guide/)
 
-## Soldering a hackaBLE
+## Soldering headers hackaBLE
 
-hackaBLE can be used on a breadboard. Here's a video that will show how to solder headers on to hackaBLE.
+hackaBLE can be used on a breadboard. Here's a video that shows how to solder headers on to hackaBLE.
 
 [![soldering_hackable](http://img.youtube.com/vi/VOO5d_ryxtU/0.jpg)](http://www.youtube.com/watch?v=VOO5d_ryxtU)
 
@@ -101,7 +101,6 @@ hackaBLE can be used on a breadboard. Here's a video that will show how to solde
 
 hackaBLE is available for purchase from our [Tindie store][2]. Please email us at **info@electronut.in** if you have any questions.
 
-<a href="https://www.tindie.com/stores/ElectronutLabs/?ref=offsite_badges&utm_source=sellers_ElectronutLabs&utm_medium=badges&utm_campaign=badge_large"><img src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-larges.png" alt="I sell on Tindie" width="200" height="104"></a>
 
 [1]: https://github.com/electronut/ElectronutLabs-bluey/blob/master/nrf5-sdk-setup.md
 [2]: https://www.tindie.com/stores/ElectronutLabs/
