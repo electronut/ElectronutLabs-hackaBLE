@@ -1,6 +1,7 @@
 import sys
 import argparse
 from PIL import Image
+import subprocess
 from subprocess import Popen, PIPE
 
 # compress given image from N*N to N*N/8 - B & W image
@@ -156,6 +157,20 @@ def main():
         print("printing image header...")
         # print
         print_img(image_data_bw_c, [], "image.js", image_name, image_width, image_height)
+
+        process = Popen('sudo node transfer_image.js', shell=True, stdout=PIPE, stderr=PIPE)
+        stdout, stderr = process.communicate()
+
+        print stderr
+        print "-------------------------------"
+        print stdout
+        
+        # if not stderr:
+        #     print stdout
+        # else:
+        #     print("error while transferring image data")
+
+        print("done")
 
 
 # call main
