@@ -37,10 +37,10 @@ int epaper_init();
 void epaper_clear();
 
 /**
- * @brief test epaper
+ * @brief display default image
  * 
  */
-void epaper_test();
+void epaper_default_image();
 
 #ifdef __cplusplus 
 }

@@ -86,8 +86,7 @@
 
 #include "epaper.h"
 
-#define DEVICE_NAME                "Nordic_Template"           /**< Name of device. Will be included in the advertising data. */
-#define MANUFACTURER_NAME          "NordicSemiconductor"       /**< Manufacturer. Will be passed to Device Information Service. */
+#define DEVICE_NAME                "hackBLE"           /**< Name of device. Will be included in the advertising data. */
 #define APP_ADV_INTERVAL            300                        /**< The advertising interval (in units of 0.625 ms. This value corresponds to 187.5 ms). */
 
 #define APP_ADV_DURATION            18000                      /**< The advertising duration (180 seconds) in units of 10 milliseconds. */
@@ -756,8 +755,8 @@ static void advertising_init(void)
     init.advdata.name_type = BLE_ADVDATA_FULL_NAME;
     init.advdata.include_appearance = true;
     init.advdata.flags = BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE;
-    init.advdata.uuids_complete.uuid_cnt = sizeof(m_adv_uuids) / sizeof(m_adv_uuids[0]);
-    init.advdata.uuids_complete.p_uuids = m_adv_uuids;
+    // init.advdata.uuids_complete.uuid_cnt = sizeof(m_adv_uuids) / sizeof(m_adv_uuids[0]);
+    // init.advdata.uuids_complete.p_uuids = m_adv_uuids;
 
     init.config.ble_adv_fast_enabled = true;
     init.config.ble_adv_fast_interval = APP_ADV_INTERVAL;
@@ -837,52 +836,6 @@ static void advertising_start(bool erase_bonds)
     }
 }
 
-/***************************** EPAPER *****************************/
-#if 0
-EPD epd;
-
-unsigned char frame_buffer_black_arr[EPD_WIDTH * EPD_HEIGHT / 8];
-unsigned char *frame_buffer_black = frame_buffer_black_arr;
-unsigned char frame_buffer_red_arr[EPD_WIDTH * EPD_HEIGHT / 8];
-unsigned char *frame_buffer_red = frame_buffer_red_arr;
-
-Paint paint_black;
-Paint paint_red;
-
-int epaper_init()
-{
-    epaper_GPIO_Init();
-    spi_epd_init();
-    
-    return EPD_Init(&epd);
-}
-
-void epaper_test()
-{
-    Paint_Init(&paint_black, frame_buffer_black, epd.width, epd.height);
-    Paint_Init(&paint_red, frame_buffer_red, epd.width, epd.height);
-    Paint_Clear(&paint_black, UNCOLORED);
-    Paint_Clear(&paint_red, UNCOLORED);
-
-    /* Display the frame_buffer */
-    Paint_SetRotate(&paint_black, 3);
-    Paint_DrawStringAt(&paint_black, 20, 90, "EPAPER TEST", &Font20, COLORED);
-    
-    EPD_DisplayFrame(&epd, frame_buffer_black, frame_buffer_red);
-}
-
-void epaper_clear()
-{
-    Paint_Init(&paint_black, frame_buffer_black, epd.width, epd.height);
-    Paint_Init(&paint_red, frame_buffer_red, epd.width, epd.height);
-    Paint_Clear(&paint_black, UNCOLORED);
-    Paint_Clear(&paint_red, UNCOLORED);
-
-    EPD_DisplayFrame(&epd, frame_buffer_black, frame_buffer_red);
-}
-#endif
-/***************************** EPAPER *****************************/
-
 /**@brief Function for application main entry.
  */
 int main(void)
@@ -909,7 +862,7 @@ int main(void)
     advertising_start(erase_bonds);
 
     epaper_init();
-    epaper_test();
+    epaper_default_image();
     
     // Enter main loop.
     for (;;)
