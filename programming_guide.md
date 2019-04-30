@@ -29,4 +29,4 @@ This demo shows temperature and humidity data received over BLE from sensor atta
 </p>
 <canvas style="border: 1px solid black;" id="humidity" width="400" height="100"></canvas>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothie/1.34.0/smoothie.js"></script>
-<script src="./code/web-bluetooth-demo/index.js"></script>
+<script src="../code/web-bluetooth-demo/index.js"></script>
