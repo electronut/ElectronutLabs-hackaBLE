@@ -1,6 +1,6 @@
  
 
-hackable does not ship with a bootloader, but it is supported in Arduino. Please visit [here](https://github.com/electronut/ElectronutLabs-bluey#Arduino) for details (but select Hackable in the board's menu).
+hackaBLE does not ship with a bootloader, but it is supported in Arduino. Please visit [here](https://github.com/electronut/ElectronutLabs-bluey#Arduino) for details (but select hackaBLE in the board's menu).
 
 [Here's](https://electronut.in/using-hackable-with-arduino/) a blog article which will help you create a BLE custom characteristic and program it to hackaBLE using Arduino IDE.
 
@@ -8,7 +8,7 @@ The detailed hackaBLE programming guide comming soon.
 
 ## Using Web Bluetooth
 
-You can connect directly to hackable using [Web Bluetooth](https://webbluetoothcg.github.io/web-bluetooth/). For this to work, your browser must support Web Bluetooth. To check list of available browsers, visit this [link](https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API#Browser_compatibility). On Google Chrome, you should have enabled experimental web features by visiting the url :
+You can connect directly to hackaBLE using [Web Bluetooth](https://webbluetoothcg.github.io/web-bluetooth/). For this to work, your browser must support Web Bluetooth. To check list of available browsers, visit this [link](https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API#Browser_compatibility). On Google Chrome, you should have enabled experimental web features by visiting the url :
 ```chrome://flags/#enable-experimental-web-platform-features```
 
 ### Try it here !
