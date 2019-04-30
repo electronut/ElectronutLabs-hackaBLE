@@ -115,13 +115,13 @@ connect.addEventListener('click', function (event) {
     function handleTemperatureNotifications(event) {
         var temperature_bytes = new Int16Array(event.target.value.buffer);
         line1.append(new Date().getTime(), temperature_bytes[0] * 0.01);
-        temp_text.innerText = (temperature_bytes[0] * 0.01).toFixed(2);
+        temp_text.innerText = (temperature_bytes[0] * 0.01).toFixed(2) + " °C";
     }
 
     function handleHumidityNotifications(event) {
         var humidity_bytes = new Uint16Array(event.target.value.buffer);
         line2.append(new Date().getTime(), humidity_bytes[0] * 0.01);
-        hum_text.innerText = (humidity_bytes[0] * 0.01).toFixed(2);
+        hum_text.innerText = (humidity_bytes[0] * 0.01).toFixed(2) + " %";
 
     }
 
