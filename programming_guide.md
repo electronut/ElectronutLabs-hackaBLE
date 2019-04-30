@@ -13,7 +13,7 @@ You can connect directly to hackable using [Web Bluetooth](https://webbluetoothc
 
 ### Try it here !
 
-This demo shows temperature and humidity data received over BLE from sensor attached to hackaBLE. You can accessthe Firmware at this [link](https://gitlab.com/electronutlabs-public/electronutlabs-hackable/tree/master/code/zephyr_ble_th).
+This demo shows temperature and humidity data received over BLE from sensor attached to hackaBLE. You can access the Firmware at this [link](https://gitlab.com/electronutlabs-public/electronutlabs-hackable/tree/master/code/zephyr_ble_th).
 
 <p id="status_p"></p>
 <button data-md-color-primary="light-blue" id="connect">Connect</button>
@@ -22,7 +22,6 @@ This demo shows temperature and humidity data received over BLE from sensor atta
     Temperature : <span id="temp_text"></span>
 </p>
 <canvas style="border: 1px solid black;" id="temperature" width="400" height="100"></canvas>
-<br>
 <br>
 <p>
     Humidity : <span id="hum_text"></span>
