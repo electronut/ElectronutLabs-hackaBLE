@@ -48,7 +48,7 @@ This is the latest version of hackaBLE it uses **Raytac's nRF52832 module** by N
 
 ### hackaBLE v0.3 Schematic and Datasheet
 
-- [schematic](https://github.com/electronut/ElectronutLabs-hackaBLE/blob/master/pcb/ver0.3/hackaBLE_Schematic.pdf)
+- [schematic](pcb/ver0.3/hackaBLE_Schematic.pdf)
 - datasheet
 
 <hr>
@@ -67,7 +67,7 @@ hackaBLE v2.2 is a redesigned hackaBLE that used the BLE SoC directly rather tha
 
 ### Schematic for hackaBLE v2.2
 
-- [Schematic](https://github.com/electronut/ElectronutLabs-hackaBLE/blob/master/pcb/ver2.2/hackaBLE.pdf)
+- [Schematic](pcb/ver2.2/hackaBLE.pdf)
 
 ## Programming hackaBLE
 
@@ -104,14 +104,14 @@ hackaBLE is available for purchase from our [Tindie store][2]. Please email us a
 
 [1]: https://github.com/electronut/ElectronutLabs-bluey/blob/master/nrf5-sdk-setup.md
 [2]: https://www.tindie.com/stores/ElectronutLabs/
-[3]: https://github.com/electronut/ElectronutLabs-Bumpy
-[4]: https://github.com/electronut/ElectronutLabs-PogoProg
+[3]: https://gitlab.com/electronut/ElectronutLabs-Bumpy
+[4]: https://gitlab.com/electronutlabs-public/ElectronutLabs-PogoProg
 
 ## Code Repository
 
 You can find all code and design files related to Papyr at the link below:
 
-[https://github.com/electronut/ElectronutLabs-hackaBLE](https://github.com/electronut/ElectronutLabs-hackaBLE)
+[git@gitlab.com:electronutlabs-public/ElectronutLabs-HackaBLE.git](git@gitlab.com:electronutlabs-public/ElectronutLabs-HackaBLE.git)
 
 ## About Electronut Labs
 
