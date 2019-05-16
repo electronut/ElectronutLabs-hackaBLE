@@ -109,9 +109,7 @@ hackaBLE is available for purchase from our [Tindie store][2]. Please email us a
 
 ## Code Repository
 
-You can find all code and design files related to Papyr at the link below:
-
-[git@gitlab.com:electronutlabs-public/ElectronutLabs-HackaBLE.git](git@gitlab.com:electronutlabs-public/ElectronutLabs-HackaBLE.git)
+You can find all code and design files related to HackaBLE in this [repository](git@gitlab.com:electronutlabs-public/ElectronutLabs-HackaBLE.git).
 
 ## About Electronut Labs
 
